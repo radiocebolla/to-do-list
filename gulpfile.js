@@ -66,7 +66,7 @@ const js = () => {
     .pipe(webpackStream(webpackConfig), webpack)
     .pipe(dest('./dist/js'))
     .pipe(browserSync.stream())
-}
+} 
 
 const build = series(clean, parallel(html, css, js));
 const dev = parallel(build, watchFiles, browserSyncFn);
