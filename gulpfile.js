@@ -20,7 +20,6 @@ const less = require('gulp-less');
 const autoprefixer = require('gulp-autoprefixer');
 const cleanCss = require('gulp-clean-css');
 
-
 const clean = () => {
     return del('./dist')
 }
@@ -56,8 +55,8 @@ const css = () => {
         cascade: false
     }))
     .pipe(cleanCss())
-    .pipe(dest('./dist/css'))
     .pipe(rename({extname: '.min.css'}))
+    .pipe(dest('./dist/css'))
     .pipe(browserSync.stream())
 }
 
