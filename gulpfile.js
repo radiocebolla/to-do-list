@@ -16,7 +16,7 @@ const argv = yargs.argv;
 webpackConfig.mode = !!argv.development ? 'development' : 'production';
 
 // css 
-const scss = require('gulp-sass');
+const less = require('gulp-less');
 const autoprefixer = require('gulp-autoprefixer');
 const cleanCss = require('gulp-clean-css');
 
@@ -27,7 +27,7 @@ const clean = () => {
 
 const watchFiles = () => {
     watch(['./src/index.html'], html);
-    watch(['./src/scss/style.scss'], css);
+    watch(['./src/less/style.less'], css);
     watch(['./src/js/**.js'], js)
 }
 
@@ -49,8 +49,8 @@ const html = () => {
 }
 
 const css = () => {
-    return src('./src/scss/style.scss')
-    .pipe(scss({outputStyle: 'expanded'}))
+    return src('./src/less/style.less')
+    .pipe(less())
     .pipe(autoprefixer({
         overrideBrowserslist: ['last 15 versions', '> 1%', 'ie 8', 'ie 7'],
         cascade: false
@@ -58,8 +58,6 @@ const css = () => {
     .pipe(cleanCss())
     .pipe(dest('./dist/css'))
     .pipe(rename({extname: '.min.css'}))
-    .pipe(scss({outputStyle: 'compressed'}))
-    .pipe(dest('./dist/css'))
     .pipe(browserSync.stream())
 }
 
