@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.min.css">
-    <title>To-do listgit</title>
+    <title>To-do list</title>
 </head>
 <body>
+    @@include('./header.html')
     <!-- header будет статичен, поэтому создадим отдельный хтмл для него и сюда
     его подключим -->
 
@@ -15,7 +16,7 @@
         поэтому можно и для него сделать отдельный хтмл файл и тоже
         просто его здесь подключить.
     -->
-
+    @@include('./footer.html')
     <div id="root"></div>
 
 <script src="./js/bundle.js"></script>
