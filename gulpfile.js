@@ -1,5 +1,9 @@
 const { src, dest, series, parallel, watch } = require('gulp');
 
+//fonts 
+const ttf2woff = require('gulp-ttf2woff');
+const ttf2woff2 = require('gulp-ttf2woff2');
+
 // webpack
 const webpack = require('webpack');
 const webpackStream = require('webpack-stream');
@@ -25,9 +29,9 @@ const clean = () => {
 }
 
 const watchFiles = () => {
-    watch(['./src/index.html'], html);
-    watch(['./src/less/style.less'], css);
-    watch(['./src/js/**.js'], js)
+    watch(['./src/*.html'], html);
+    watch(['./src/less/*.less'], css);
+    watch(['./src/js/*.js'], js)
 }
 
 const browserSyncFn = () => {
@@ -41,7 +45,7 @@ const browserSyncFn = () => {
 }
 
 const html = () => {
-    return src('./src/index.html')
+    return src('./src/*.html')
     .pipe(fileInclude())
     .pipe(dest('./dist/'))
     .pipe(browserSync.stream())
@@ -65,9 +69,18 @@ const js = () => {
     .pipe(webpackStream(webpackConfig), webpack)
     .pipe(dest('./dist/js'))
     .pipe(browserSync.stream())
-} 
+}
 
-const build = series(clean, parallel(html, css, js));
+const fonts = () => {
+    src('./src/fonts/*.ttf')
+        .pipe(ttf2woff())
+        .pipe(dest('./dist/fonts'))
+    return src('./src/fonts/*.ttf')
+        .pipe(ttf2woff2())
+        .pipe(dest('./dist/fonts'))
+}
+
+const build = series(clean, parallel(html, css, js, fonts));
 const dev = parallel(build, watchFiles, browserSyncFn);
 
 exports.default = dev;

@@ -7,18 +7,22 @@
     <title>Document</title>
 </head>
 <body>
-    <!-- header будет статичен, поэтому создадим отдельный хтмл для него и сюда
-    его подключим -->
+    @@include('./header.html')
 
-    <!-- блок для добавления задач
-        его тоже не нужно будет перерисовывать, в отличие от списка задач,
-        поэтому можно и для него сделать отдельный хтмл файл и тоже
-        просто его здесь подключить.
-    -->
+    <main class="main">
+        <div class="container">
 
-    <div id="root">
-        Hello world!
-    </div>
+            <div class="add-tasks-block">
+                <div class="add-tasks-block__input">
+                    <input type="text">
+                </div>
+                <div class="add-tasks-block__btn">
+                    add-task-block__btn
+                </div>
+            </div>
+
+        </div>
+    </main>
 
 <script src="./js/bundle.js"></script>
 </body>
