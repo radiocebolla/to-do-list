@@ -13,6 +13,30 @@
     <!-- header будет статичен, поэтому создадим отдельный хтмл для него и сюда
     его подключим -->
 
+    <main class="main">
+        <section class="add-tasks">
+            <div class="container">
+                <div class="add-tasks__block">
+                    <input class="add-tasks__input" type="text" placeholder="напиши сюда что-нибудь">
+                </div>
+                <div class="add-tasks__btn">
+                    add-task-block__btn
+                </div>
+            </div>
+        </section>
+        <section class="tasks">
+            <div class="container">
+                <ul class="tasks__list list">
+                    <li class="list__item"></li>
+                    <li class="list__item"></li>
+                    <li class="list__item"></li>
+                    <li class="list__item"></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+
     <!-- блок для добавления задач
         его тоже не нужно будет перерисовывать, в отличие от списка задач,
         поэтому можно и для него сделать отдельный хтмл файл и тоже
