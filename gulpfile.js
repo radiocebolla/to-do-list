@@ -26,9 +26,9 @@ const clean = () => {
 }
 
 const watchFiles = () => {
-    watch(['./src/index.html'], html);
-    watch(['./src/less/style.less'], css);
-    watch(['./src/js/**.js'], js)
+    watch(['./src/*.html'], html);
+    watch(['./src/less/*.less'], css);
+    watch(['./src/js/*.js'], js)
 }
 
 const browserSyncFn = () => {
@@ -56,8 +56,8 @@ const css = () => {
         cascade: false
     }))
     .pipe(cleanCss())
-    .pipe(dest('./dist/css'))
     .pipe(rename({extname: '.min.css'}))
+    .pipe(dest('./dist/css'))
     .pipe(browserSync.stream())
 }
 
