@@ -1,5 +1,9 @@
 const { src, dest, series, parallel, watch } = require('gulp');
 
+//fonts 
+const ttf2woff = require('gulp-ttf2woff');
+const ttf2woff2 = require('gulp-ttf2woff2');
+
 // webpack
 const webpack = require('webpack');
 const webpackStream = require('webpack-stream');
@@ -20,15 +24,14 @@ const less = require('gulp-less');
 const autoprefixer = require('gulp-autoprefixer');
 const cleanCss = require('gulp-clean-css');
 
-
 const clean = () => {
     return del('./dist')
 }
 
 const watchFiles = () => {
-    watch(['./src/index.html'], html);
-    watch(['./src/less/style.less'], css);
-    watch(['./src/js/**.js'], js)
+    watch(['./src/*.html'], html);
+    watch(['./src/less/*.less'], css);
+    watch(['./src/js/*.js'], js)
 }
 
 const browserSyncFn = () => {
@@ -42,7 +45,7 @@ const browserSyncFn = () => {
 }
 
 const html = () => {
-    return src('./src/index.html')
+    return src('./src/*.html')
     .pipe(fileInclude())
     .pipe(dest('./dist/'))
     .pipe(browserSync.stream())
@@ -56,8 +59,8 @@ const css = () => {
         cascade: false
     }))
     .pipe(cleanCss())
-    .pipe(dest('./dist/css'))
     .pipe(rename({extname: '.min.css'}))
+    .pipe(dest('./dist/css'))
     .pipe(browserSync.stream())
 }
 
@@ -68,7 +71,16 @@ const js = () => {
     .pipe(browserSync.stream())
 }
 
-const build = series(clean, parallel(html, css, js));
+const fonts = () => {
+    src('./src/fonts/*.ttf')
+        .pipe(ttf2woff())
+        .pipe(dest('./dist/fonts'))
+    return src('./src/fonts/*.ttf')
+        .pipe(ttf2woff2())
+        .pipe(dest('./dist/fonts'))
+}
+
+const build = series(clean, parallel(html, css, js, fonts));
 const dev = parallel(build, watchFiles, browserSyncFn);
 
 exports.default = dev;
