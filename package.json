@@ -2,7 +2,7 @@
   "name": "gulppractice",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
     "dev": "gulp --development",
     "build": "gulp build --production"
@@ -29,11 +29,14 @@
     "gulp-sass": "^4.1.0",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-terser": "^1.2.0",
+    "gulp-ttf2woff": "^1.1.1",
+    "gulp-ttf2woff2": "^4.0.1",
     "webpack": "^5.16.0",
     "webpack-stream": "^5.2.1"
   },
   "dependencies": {
     "@babel/runtime": "^7.12.5",
+    "normalize.less": "^1.0.0",
     "yargs": "^16.2.0"
   }
 }
