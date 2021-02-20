@@ -1,47 +1,11 @@
 @import "node_modules/normalize.less/normalize.less";
-@import "fonts.less";
-
-@mainBgColor: rgb(255,255,255);
-@colorBtnAdd: rgba(24, 111, 83, 1);
-@colorBtnClear: rgba(176, 103, 87, 1);
-
-@containerMaxWidth: 1190px;
-
-@fontFamily: 'Roboto', sans-serif;
-@baseFontSize: 20px;
-@fontSizeH1: @baseFontSize * 3.05;
-@fontSizeString: @baseFontSize * 1.2;
-@fontSizeBlank: @baseFontSize * 1.5;
-@fontSizeBtn: @baseFontSize;
-@fontColorPrimary: rgba(62, 76, 57, 1);
-@fontColorSecondary: rgba(0, 0, 0, 0.5);
-@fontColorThirdly: rgba(0, 0, 0, 0.25);
-@fontColorFourthly: rgba(244, 241, 249, 1);
-
-/*
-@base-spacing: 8px;
-*/
-
-// mixins
-.displayFlex(@fd, @jc) {
-    display: flex;
-    flex-direction: @fd;
-    justify-content: @jc;
-}
-//
-
-
-/*
-@font-face {
-    font-family: "Roboto";
-    src: url("/fonts/OpenSans-Regular-webfont.woff2") format("woff2"),
-         url("/fonts/OpenSans-Regular-webfont.woff") format("woff");
-}
-*/
+@import "variables.less";
+@import "mixins.less";
+@import "header";
 
 body {
     font-family: @fontFamily;
-    background-color: @mainBg;
+    background-color: @mainBgColor;
     width: 100%;
     min-height: 100vh;
     overflow: hidden;
@@ -54,13 +18,6 @@ body {
     width: 100%;
     margin: 0 auto;
 }
-
-@import "header";
-
-
-
-
-
 
 .add-task-block {
     width: 100%;
