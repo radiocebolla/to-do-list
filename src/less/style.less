@@ -1,43 +1,12 @@
 @import "node_modules/normalize.less/normalize.less";
-@import "fonts.less";
+@import "variables";
+@import "mixins";
 
-@mainBgColor: rgb(255,255,255);
-@colorBtnAdd: rgba(24, 111, 83, 1);
-@colorBtnClear: rgba(176, 103, 87, 1);
-
-@containerMaxWidth: 1190px;
-
-@fontFamily: 'Roboto', sans-serif;
-@baseFontSize: 20px;
-@fontSizeH1: @baseFontSize * 3.05;
-@fontSizeString: @baseFontSize * 1.2;
-@fontSizeBlank: @baseFontSize * 1.5;
-@fontSizeBtn: @baseFontSize;
-@fontColorPrimary: rgba(62, 76, 57, 1);
-@fontColorSecondary: rgba(0, 0, 0, 0.5);
-@fontColorThirdly: rgba(0, 0, 0, 0.25);
-@fontColorFourthly: rgba(244, 241, 249, 1);
-
-/*
-@base-spacing: 8px;
-*/
-
-// mixins
-.displayFlex(@fd, @jc) {
-    display: flex;
-    flex-direction: @fd;
-    justify-content: @jc;
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
 }
-//
-
-
-/*
-@font-face {
-    font-family: "Roboto";
-    src: url("/fonts/OpenSans-Regular-webfont.woff2") format("woff2"),
-         url("/fonts/OpenSans-Regular-webfont.woff") format("woff");
-}
-*/
 
 body {
     font-family: @fontFamily;
@@ -45,41 +14,71 @@ body {
     width: 100%;
     min-height: 100vh;
     overflow: hidden;
-    box-sizing: border-box;
     .displayFlex(column, space-between);
+}
+
+.main {
+    flex-grow: 1;
 }
 
 .container {
     max-width: @containerMaxWidth;
-    width: 100%;
     margin: 0 auto;
+    padding: 0 @containerSidePadding;
+        .displayFlex(row, space-between);
 }
 
-@import "header";
-
-
-
-
-
-
-.add-task-block {
-    width: 100%;
-    .displayFlex(row, space-between);
-    &__input {
-        width: 82%;
+.add-tasks {
+    margin: 0 0 108px 0;
+    &__block {
+        width: 88.38%;
         height: 90px;
         min-width: 300px;
         background-color: rgba(229,229,229);
         border-radius: 10px;
         padding: 15px;
-        input {
-            width: 100%;
-            outline: none;
-            border: none;
-            height: 100%;
-            border-radius: 10px;
+    }
+    &__input {
+        width: 100%;
+        outline: none;
+        border: none;
+        height: 100%;
+        border-radius: 10px;
+        font-size: @fontSizeString;
+        color: @fontColorPrimary;
+        padding: 18px 24px;
+    }
+    &__btn {
+        width: 95px;
+        height: 90px;
+        background-color: @colorBtnAdd;
+        box-shadow: @baseBoxShadow;
+        border-radius: 50px;
+        position: relative;
+        cursor: pointer;
+        transition: all 70ms linear;
+        &:hover {
+            background-color: @colorBtnAddHover;
+        }
+        &::before, &::after {
+            content: "";
+            position: absolute;
+            width: 35px;
+            height: 2px;
+            background-color: @colorCrossIcon;
+            top: 44px;
+            left: 30px;
+        }
+        &::after {
+            transform: rotate(90deg);
         }
     }
-    // &__btn {}
 }
 
+.list {
+    .resetListStyle;
+}
+
+
+@import "header";
+@import "footer";

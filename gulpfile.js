@@ -24,17 +24,17 @@ const less = require('gulp-less');
 const autoprefixer = require('gulp-autoprefixer');
 const cleanCss = require('gulp-clean-css');
 
-const clean = () => {
+function clean() {
     return del('./dist')
 }
 
-const watchFiles = () => {
+function watchFiles() {
     watch(['./src/*.html'], html);
     watch(['./src/less/*.less'], css);
     watch(['./src/js/*.js'], js)
 }
 
-const browserSyncFn = () => {
+function browserSyncFn() {
     browserSync.init({
         server: {
             baseDir: './dist',
@@ -44,14 +44,14 @@ const browserSyncFn = () => {
     })
 }
 
-const html = () => {
+function html() {
     return src('./src/*.html')
     .pipe(fileInclude())
     .pipe(dest('./dist/'))
     .pipe(browserSync.stream())
 }
 
-const css = () => {
+function css() {
     return src('./src/less/style.less')
     .pipe(less())
     .pipe(autoprefixer({
@@ -64,14 +64,14 @@ const css = () => {
     .pipe(browserSync.stream())
 }
 
-const js = () => {
+function js() {
     return src('./src/js/index.js')
     .pipe(webpackStream(webpackConfig), webpack)
     .pipe(dest('./dist/js'))
     .pipe(browserSync.stream())
 }
 
-const fonts = () => {
+function fonts() {
     src('./src/fonts/*.ttf')
         .pipe(ttf2woff())
         .pipe(dest('./dist/fonts'))
