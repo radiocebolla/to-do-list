@@ -2,9 +2,13 @@
 
 @mainBgColor: rgb(255,255,255);
 @colorBtnAdd: rgba(24, 111, 83, 1);
+@colorBtnAddHover: lighten(@colorBtnAdd, 10%);
+@colorCrossIcon: rgba(241,230,255,1);
 @colorBtnClear: rgba(176, 103, 87, 1);
+@colorBtnClearHover: darken(@colorBtnClear, 7%);
 
-@containerMaxWidth: 1190px;
+@containerSidePadding: 15px;
+@containerMaxWidth: 1110px + @containerSidePadding * 2;
 
 @fontFamily: 'Roboto', sans-serif;
 @baseFontSize: 20px;
@@ -16,3 +20,5 @@
 @fontColorSecondary: rgba(0, 0, 0, 0.5);
 @fontColorThirdly: rgba(0, 0, 0, 0.25);
 @fontColorFourthly: rgba(244, 241, 249, 1);
+
+@baseBoxShadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
