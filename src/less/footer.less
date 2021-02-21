@@ -1,0 +1,21 @@
+@import "variables";
+@import "mixins";
+
+.footer {
+    &__wrapper {
+        width: 100%;
+        padding: 60px 0;
+        .displayFlex(row, flex-end);
+    }
+    &__btn {
+        .resetLinkStyle;
+        line-height: 23px;
+        padding: 23px 42px;
+        box-shadow: @baseBoxShadow;
+        border-radius: 10px;
+        transition: all 70ms linear;
+        &:hover {
+            background-color: @colorBtnClearHover;
+        }    
+    }
+}
