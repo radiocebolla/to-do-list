@@ -1,88 +1,84 @@
 @import "node_modules/normalize.less/normalize.less";
-@import 'fonts.less';
-@fontFamily: 'Roboto', sans-serif;
-@mainBg: rgb(255,255,255);
-@containerMaxWidth: 1190px;
-@font: 'Roboto', sans-serif;
-@base-font-size: 20px;
-@font-size-h1: @base-font-size * 3.05;
-@font-size-string: @base-font-size * 1.2;
-@font-size-blank: @base-font-size * 1.5;
-@font-size-btn: @base-font-size;
-@font-color-primary: #3E4C39;
-@font-color-secondary: #000000;
-@font-color-thirdly: #C4C4C4;
-@font-color-fourthly: #F4F1F9;
+@import "variables";
+@import "mixins";
 
-@bg-color: #ffffff;
-@color-btn-add: #186F53;
-@color-btn-clear: #B06757;
-
-// mixins
-.displayFlex(@fd, @jc) {
-    display: flex;
-    flex-direction: @fd;
-    justify-content: @jc;
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
 }
-//
 
 body {
     font-family: @fontFamily;
-    background-color: @mainBg;
+    background-color: @mainBgColor;
     width: 100%;
     min-height: 100vh;
     overflow: hidden;
-    box-sizing: border-box;
     .displayFlex(column, space-between);
+}
+
+.main {
+    flex-grow: 1;
 }
 
 .container {
     max-width: @containerMaxWidth;
-    width: 100%;
     margin: 0 auto;
+    padding: 0 @containerSidePadding;
+        .displayFlex(row, space-between);
 }
 
-.header {
-    &__text {
-        text-align: center;
-        font-size: 61px;
-        font-weight: 400;
-        line-height: 71px;
-        letter-spacing: 0em;
-    }
-}
-
-.add-task-block {
-    width: 100%;
-    .displayFlex(row, space-between);
-    &__input {
-        width: 82%;
+.add-tasks {
+    margin: 0 0 108px 0;
+    &__block {
+        width: 88.38%;
         height: 90px;
         min-width: 300px;
         background-color: rgba(229,229,229);
         border-radius: 10px;
         padding: 15px;
-        input {
-            width: 100%;
-            outline: none;
-            border: none;
-            height: 100%;
-            border-radius: 10px;
+    }
+    &__input {
+        width: 100%;
+        outline: none;
+        border: none;
+        height: 100%;
+        border-radius: 10px;
+        font-size: @fontSizeString;
+        color: @fontColorPrimary;
+        padding: 18px 24px;
+    }
+    &__btn {
+        width: 95px;
+        height: 90px;
+        background-color: @colorBtnAdd;
+        box-shadow: @baseBoxShadow;
+        border-radius: 50px;
+        position: relative;
+        cursor: pointer;
+        transition: all 70ms linear;
+        &:hover {
+            background-color: @colorBtnAddHover;
+        }
+        &::before, &::after {
+            content: "";
+            position: absolute;
+            width: 35px;
+            height: 2px;
+            background-color: @colorCrossIcon;
+            top: 44px;
+            left: 30px;
+        }
+        &::after {
+            transform: rotate(90deg);
         }
     }
-    // &__btn {}
 }
-/*
-@base-spacing: 8px;
-*/
 
-
-
-body {
-    font-family: @font;
-    background-color: @bg-color;
-    margin: 0;
-    padding: 0;
+.list {
+    .resetListStyle;
 }
+
 
 @import "header";
+@import "footer";
