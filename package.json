@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.12.5",
+    "gulp-imagemin": "^7.1.0",
     "normalize.less": "^1.0.0",
     "yargs": "^16.2.0"
   }
