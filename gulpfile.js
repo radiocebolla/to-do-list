@@ -4,6 +4,9 @@ const { src, dest, series, parallel, watch } = require('gulp');
 const ttf2woff = require('gulp-ttf2woff');
 const ttf2woff2 = require('gulp-ttf2woff2');
 
+//images
+const imagemin = require('gulp-imagemin');
+
 // webpack
 const webpack = require('webpack');
 const webpackStream = require('webpack-stream');
@@ -31,7 +34,8 @@ function clean() {
 function watchFiles() {
     watch(['./src/*.html'], html);
     watch(['./src/less/*.less'], css);
-    watch(['./src/js/*.js'], js)
+    watch(['./src/js/*.js'], js);
+    watch(['./src/js/*.js'], images);
 }
 
 function browserSyncFn() {
@@ -78,9 +82,27 @@ function fonts() {
     return src('./src/fonts/*.ttf')
         .pipe(ttf2woff2())
         .pipe(dest('./dist/fonts'))
+        .pipe(browserSync.stream())
 }
 
-const build = series(clean, parallel(html, css, js, fonts));
+function images() {
+    return src('src/img/*.{png,jpg,svg,gif}')
+    .pipe(imagemin([
+        imagemin.gifsicle({interlaced: true}),
+        imagemin.mozjpeg({quality: 75, progressive: true}),
+        imagemin.optipng({optimizationLevel: 5}),
+        imagemin.svgo({
+            plugins: [
+                {removeViewBox: true},
+                {cleanupIDs: false}
+            ]
+        })
+    ]))
+    .pipe(dest('dist/img'))
+    .pipe(browserSync.stream())
+}
+
+const build = series(clean, parallel(html, css, js, fonts, images));
 const dev = parallel(build, watchFiles, browserSyncFn);
 
 exports.default = dev;
