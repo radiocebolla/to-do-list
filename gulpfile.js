@@ -85,3 +85,4 @@ const dev = parallel(build, watchFiles, browserSyncFn);
 
 exports.default = dev;
 exports.build = build;
+exports.dev = dev;
