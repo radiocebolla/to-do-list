@@ -1,6 +1,9 @@
-//li class="task-list__task"
-export const singleTask = (task) => {
-    return `<div class="singleTask">${task}</div>`
+import { label } from "./../taskLabel/label";
+// import taskText
+// import deleteBtn
+
+export const Task = (task) => {
+    return `<li class="list__item task">${label()}</li>`
 }
 
 // комментарий для забывчивой девочки Даши, которая
