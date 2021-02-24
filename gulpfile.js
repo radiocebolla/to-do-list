@@ -34,7 +34,13 @@ function clean() {
 function watchFiles() {
     watch(['./src/*.html'], html);
     watch(['./src/less/*.less'], css);
-    watch(['./src/js/*.js'], js);
+    watch([
+        './src/js/*.js',
+        './src/js/components/**/*.js',
+        './src/js/helpers/*.js',
+        './src/js/constants/*.js',
+        './src/js/localStorage/*.js'
+    ], js);
     watch(['./src/js/*.js'], images);
 }
 
@@ -69,7 +75,7 @@ function css() {
 }
 
 function js() {
-    return src('./src/js/index.js')
+    return src('./src/js/*.js')
     .pipe(webpackStream(webpackConfig), webpack)
     .pipe(dest('./dist/js'))
     .pipe(browserSync.stream())
