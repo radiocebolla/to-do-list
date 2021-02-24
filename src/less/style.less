@@ -84,6 +84,7 @@ body {
         font-weight: 400;
         line-height: 71px;
         letter-spacing: 0em;
+        align-items: center;
         .displayFlex(row, space-between);
         padding: 17px 33px 14px 39px;
         height: 90px;
@@ -102,9 +103,6 @@ body {
 }
 
 .task {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     &__text {
         width: 80.8%;
         background-color: transparent;
@@ -189,6 +187,9 @@ body {
     }
     &::before {
         transform: rotate(135deg);
+    }
+    &:active, &:focus {
+        outline: none;
     }
 }
 
