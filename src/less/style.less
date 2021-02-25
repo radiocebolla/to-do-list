@@ -91,6 +91,7 @@ body {
         box-shadow: @baseBoxShadow;
         border-radius: 10px;
         transition: all 70ms linear;
+        align-items: center;
         &_done {
             background-color: @colorTaskChecked;
             .displayFlex(row, space-between);
@@ -102,9 +103,6 @@ body {
 }
 
 .task {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     &__text {
         width: 80.8%;
         background-color: transparent;
@@ -172,6 +170,9 @@ body {
     position: relative;
     cursor: pointer;
     transition: all 70ms linear;
+    &:active, &:focus {
+        outline: none;
+    }
     &:hover {
         background-color: transparent;
     }
