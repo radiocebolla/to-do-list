@@ -1,13 +1,9 @@
-// ul class="task-list"
+import { Task } from "./../task/task.js";
 
-import { taskBlock } from './../taskBlock/taskBlock';
-
-export const taskList = (taskListArray) => {
-    return `
-    <ul class="task-list">
-        ${taskListArray.map(task => {
-            return taskBlock(task)
+export function taskList(tasks) {
+    return `<ul class="tasks__list list">${
+        tasks.map(function(task){
+            return Task(task)
         }).join("")}
-    </ul>
-    `
-};
+    </ul>`;
+}
