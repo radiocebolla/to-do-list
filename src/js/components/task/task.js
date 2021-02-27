@@ -1,10 +1,15 @@
 import { label } from "./../taskLabel/label";
-// import taskText
-// import deleteBtn
+import { taskDeleteBtn } from "./../task/taskDeleteBtn";
+import { taskText } from "./../task/taskText";
 
 export const Task = (task) => {
-    return `<li class="list__item task">${label()}</li>`
+    return `<li class="list__item task">
+                ${label()}
+                ${taskText()}
+                ${taskDeleteBtn()}
+             </li>`
 }
+
 
 // комментарий для забывчивой девочки Даши, которая
 // хочет вешать здесь обработчики событий, чтобы не 
