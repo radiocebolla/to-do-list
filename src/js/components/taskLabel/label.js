@@ -1,6 +1,6 @@
-import { labelMark } from "./labelMark.js";
-import { taskCheckbox } from "./taskCheckbox.js";
+import { labelMark } from "./labelMark";
+import { taskCheckbox } from "./taskCheckbox";
 
-export function label() {
-    return `<label class="label">${taskCheckbox()}${labelMark()}</label>`
+export function label(status) {
+    return `<label class="label">${taskCheckbox(status)}${labelMark()}</label>`
 }
