@@ -1,4 +1,4 @@
-import { Task } from "./../task/task.js";
+import { Task } from "./../task/task";
 
 export function taskList(tasks) {
     return `<ul class="tasks__list list">${
