@@ -3,9 +3,9 @@ import { taskDeleteBtn } from "./../task/taskDeleteBtn";
 import { taskText } from "./../task/taskText";
 
 export const Task = (task) => {
-    return `<li class="list__item task">
-                ${label()}
-                ${taskText()}
+    return `<li class="list__item ${task.status ? "list__item_done" : ""} task">
+                ${label(task.status)}
+                ${taskText(task.text)}
                 ${taskDeleteBtn()}
              </li>`
 }

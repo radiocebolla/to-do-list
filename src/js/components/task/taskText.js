@@ -1,3 +1,3 @@
-export function taskText() {
-    return `<input class="task__text" type="text" value="Сварить борщ">`
+export function taskText(text) {
+    return `<input class="task__text" type="text" value="${text}">`
 }
