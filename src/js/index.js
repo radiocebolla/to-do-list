@@ -1,16 +1,16 @@
-import { taskList } from "./components/taskList/taskList.js";
-const tasks = [
-    'task 1',
-    'task 2',
-    'task 3',
-    'task 4',
-];
+import { taskList } from "./components/taskList/taskList";
+import { localStorageInit } from "./localStorage/storage";
+import { getDataFromLocalStorage } from "./localStorage/storage";
 
 function render() {
     const container = document.querySelector(".tasks .container");
-    const list = taskList(tasks);
-    console.log(list)
-    container.innerHTML = list;
+    const taskListArray = getDataFromLocalStorage();
+    container.innerHTML = taskListArray.length ? taskList(taskListArray) : "Место для твоих задач";
 }
 
-render();
+function init() {
+    localStorageInit();
+    render();
+}
+
+init();
