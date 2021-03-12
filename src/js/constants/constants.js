@@ -1,18 +1,19 @@
-// export handlers.js
-const activeElements = {
+import { addTask} from "./../helpers/handlers";
+
+export const activeElements = {
     staticElements: [
         {
             elementSelector: ".add-tasks__input",
-            eventName: "enter",
-            handler: "addTask" 
+            eventName: "keydown",
+            handler: addTask 
         },
         {
             elementSelector: ".add-tasks__btn",
             eventName: "click",
-            handler: "addTask"
+            handler: addTask
         },
         {
-            elementSelector: ".footer-btn",
+            elementSelector: ".footer__btn",
             eventName: "click",
             handler: "deleteAllTasks"
         }
@@ -30,7 +31,7 @@ const activeElements = {
         },
         {
             elementSelector: ".task__text",
-            eventName: "enter",
+            eventName: "keydown",
             handler: "editTextTask" 
         },
         {
