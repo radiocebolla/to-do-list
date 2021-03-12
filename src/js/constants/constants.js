@@ -1,4 +1,4 @@
-import { addTask} from "./../helpers/handlers";
+import { addTask, deleteAllTasks, deleteTask, changeStatus, editTextTask} from "./../helpers/handlers";
 
 export const activeElements = {
     staticElements: [
@@ -15,29 +15,29 @@ export const activeElements = {
         {
             elementSelector: ".footer__btn",
             eventName: "click",
-            handler: "deleteAllTasks"
+            handler: deleteAllTasks
         }
     ],
     dynamicElements: [
         {
             elementSelector: ".btn-delete",
             eventName: "click",
-            handler: "deleteTask"
+            handler: deleteTask
         },
         {
             elementSelector: ".task__checkbox",
             eventName: "click",
-            handler: "changeStatus" 
+            handler: changeStatus
         },
         {
             elementSelector: ".task__text",
             eventName: "keydown",
-            handler: "editTextTask" 
+            handler: editTextTask
         },
         {
             elementSelector: ".task__text",
             eventName: "change",
-            handler: "editTextTask" 
+            handler: editTextTask
         }
     ]
 }
