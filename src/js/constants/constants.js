@@ -5,7 +5,7 @@ export const activeElements = {
         {
             elementSelector: ".add-tasks__input",
             eventName: "keydown",
-            handler: addTask 
+            handler: addTask
         },
         {
             elementSelector: ".add-tasks__btn",

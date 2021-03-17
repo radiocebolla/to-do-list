@@ -1,5 +1,12 @@
+import { addTaskToStorage, editTextTaskInStorage } from "./../localStorage/storage";
+import { render } from "./../index";
+
 export function addTask(e) {
-    console.log("addTask", e.type);
+    if(e.type === "keydown" && e.keyCode !== 13) return;
+    const input = document.querySelector(".add-tasks__input");
+    const inputValue = input.value;
+    addTaskToStorage(inputValue);
+    render();
 }
 
 export function deleteAllTasks(e) {
@@ -11,9 +18,15 @@ export function deleteTask(e) {
 }
 
 export function changeStatus(e) {
-    console.log("changeStatus", e.type);
+    
 }
 
 export function editTextTask(e) {
-    console.log("editTextTask", e.type);
+    if(e.type === "keydown" && e.keyCode !== 13) return;
+    const inputValue = e.target.value;
+    const closestLiID = e.target.closest(".list__item").getAttribute("data-id");
+    // console.log(inputValue);
+    // console.log(closestLiID);
+    editTextTaskInStorage(closestLiID, inputValue);
+    render();
 }

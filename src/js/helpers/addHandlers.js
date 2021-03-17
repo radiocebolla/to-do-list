@@ -9,14 +9,15 @@ export function addHandlers(elements, removeListener) {
     2. Навесить addEventListener на каждый
     3. Написать условие, которое проверяет, надо ли removeEventListener
     */
+    // attachEvent(textarea, 'blur', onblur);
     elements.forEach(function(element){
         const domElements = document.querySelectorAll(element.elementSelector);
-        // if(removeListener) {
-        //     domElement.removeEventListener(element.eventName, function(){
-        //         test(element.handler);
-        //     });
-        // }
         domElements.forEach(function(domElement){
+            if(removeListener) {
+                domElement.removeEventListener(element.eventName, function(){
+                    test(element.handler);
+                });
+            }
             domElement.addEventListener(element.eventName, function(e){
                 element.handler(e)
             });
