@@ -52,7 +52,7 @@ export function editTextTaskInStorage(dataId, inputValue) {
     localStorage.setItem("taskListArray", JSON.stringify(newTasksArray));
 }
 
-export function changeStatus(dataId) {
+export function changeStatusInStorage(dataId) {
     let currentTasks = JSON.parse(localStorage.getItem("taskListArray"));
     const newTasksArray = currentTasks.map(function(task) {
         if(task.id === Number.parseInt(dataId))

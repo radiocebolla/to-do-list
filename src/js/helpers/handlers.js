@@ -1,4 +1,4 @@
-import { addTaskToStorage, editTextTaskInStorage } from "./../localStorage/storage";
+import { addTaskToStorage, editTextTaskInStorage, changeStatusInStorage } from "./../localStorage/storage";
 import { render } from "./../index";
 
 export function addTask(e) {
@@ -18,10 +18,9 @@ export function deleteTask(e) {
 }
 
 export function changeStatus(e) {
-    const closestLiID = e.target.closest(".list__item").getAttribute("data-id");
-    console.log(e.target.closest(".list__item"))
-
-    changeStatus(closestLiID);
+    const elem = e.target;
+    const closestLiID = elem.closest(".list__item").getAttribute("data-id");
+    changeStatusInStorage(closestLiID);
     render();
 }
 
