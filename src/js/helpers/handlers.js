@@ -18,7 +18,11 @@ export function deleteTask(e) {
 }
 
 export function changeStatus(e) {
-    
+    const closestLiID = e.target.closest(".list__item").getAttribute("data-id");
+    console.log(e.target.closest(".list__item"))
+
+    changeStatus(closestLiID);
+    render();
 }
 
 export function editTextTask(e) {

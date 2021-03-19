@@ -47,7 +47,26 @@ export function editTextTaskInStorage(dataId, inputValue) {
         }
         return task;
     })
-    console.log(newTasksArray)
+    
 
     localStorage.setItem("taskListArray", JSON.stringify(newTasksArray));
 }
+
+export function changeStatus(dataId) {
+    let currentTasks = JSON.parse(localStorage.getItem("taskListArray"));
+    const newTasksArray = currentTasks.map(function(task) {
+        if(task.id === Number.parseInt(dataId))
+        {
+            if (task.status === false)
+            {
+                task.status = true;
+            }
+            else {
+                task.status = false;
+            }
+        }
+        return task;
+    })
+    localStorage.setItem("taskListArray", JSON.stringify(newTasksArray));
+}
+
