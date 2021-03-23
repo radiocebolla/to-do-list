@@ -70,6 +70,9 @@ export function changeStatusInStorage(dataId) {
     localStorage.setItem("taskListArray", JSON.stringify(newTasksArray));
 }
 
+// положить в переменнную текущий список задач
+// создать новую переменную
+// положить туда новый массив
 export function deleteTaskFromStorage(dataId) {
     const currentTasks = JSON.parse(localStorage.getItem("taskListArray"));
     const newTasksArray = currentTasks.filter(function(task){
@@ -83,6 +86,7 @@ export function deleteTaskFromStorage(dataId) {
     localStorage.setItem("taskListArray", JSON.stringify(newTasksArray));
 }
 
-// положить в переменнную текущий список задач
-// создать новую переменную
-// положить туда новый массив
+
+export function deleteAllTasksFromStorage() {
+    localStorage.setItem("taskListArray", JSON.stringify([]));
+}

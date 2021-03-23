@@ -1,4 +1,4 @@
-import { addTaskToStorage, editTextTaskInStorage, changeStatusInStorage, deleteTaskFromStorage } from "./../localStorage/storage";
+import { addTaskToStorage, editTextTaskInStorage, changeStatusInStorage, deleteTaskFromStorage, deleteAllTasksFromStorage } from "./../localStorage/storage";
 import { render } from "./../index";
 
 export function addTask(e) {
@@ -10,14 +10,13 @@ export function addTask(e) {
 }
 
 export function deleteAllTasks(e) {
-    console.log("deleteAllTasks", e.type);
+    deleteAllTasksFromStorage();
+    render();
 }
 
 export function deleteTask(e) {
-    // console.log("deleteTask", e.type);
     const elem = e.target;
     const closestLiID = elem.closest(".list__item").getAttribute("data-id");
-    console.log(closestLiID)
     deleteTaskFromStorage(closestLiID);
     render();
 }
