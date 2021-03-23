@@ -9,7 +9,7 @@ export function render() {
     const container = document.querySelector(".tasks .container");
     console.log(container)
     const taskListArray = getDataFromLocalStorage();
-    container.innerHTML = taskListArray.length ? taskList(taskListArray) : "Место для твоих задач";
+    container.innerHTML = taskListArray.length ? taskList(taskListArray) : `<p class="blank">Место для твоих задач</p>`;
     addHandlers(activeElements.dynamicElements, true);
 }
 

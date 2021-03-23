@@ -70,3 +70,19 @@ export function changeStatusInStorage(dataId) {
     localStorage.setItem("taskListArray", JSON.stringify(newTasksArray));
 }
 
+export function deleteTaskFromStorage(dataId) {
+    const currentTasks = JSON.parse(localStorage.getItem("taskListArray"));
+    const newTasksArray = currentTasks.filter(function(task){
+        if (task.id === Number.parseInt(dataId)) {
+            return false
+        }
+        else {
+            return true
+        }
+    })
+    localStorage.setItem("taskListArray", JSON.stringify(newTasksArray));
+}
+
+// положить в переменнную текущий список задач
+// создать новую переменную
+// положить туда новый массив
