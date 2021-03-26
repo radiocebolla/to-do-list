@@ -27,7 +27,7 @@ export function getDataFromLocalStorage() {
 }
 
 export function addTaskToStorage(inputValue) {
-    const currentTasksArray = JSON.parse(localStorage.getItem("taskListArray"))
+    let currentTasksArray = JSON.parse(localStorage.getItem("taskListArray"))
     const lastItem = currentTasksArray[currentTasksArray.length - 1];
     const taskID = lastItem === undefined ? 1 : lastItem.id + 1;
     const newTask = {
@@ -35,7 +35,8 @@ export function addTaskToStorage(inputValue) {
         text: inputValue,
         status: false
     }
-    localStorage.setItem("taskListArray", JSON.stringify([...currentTasksArray, newTask]))
+    currentTasksArray.push(newTask)
+    localStorage.setItem("taskListArray", JSON.stringify(currentTasksArray))
 
 }
 
@@ -89,5 +90,6 @@ export function deleteTaskFromStorage(dataId) {
 
 
 export function deleteAllTasksFromStorage() {
+    localStorage.clear()
     localStorage.setItem("taskListArray", JSON.stringify([]));
 }
