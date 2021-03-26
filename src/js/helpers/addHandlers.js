@@ -13,14 +13,9 @@ export function addHandlers(elements, removeListener) {
     elements.forEach(function(element){
         const domElements = document.querySelectorAll(element.elementSelector);
         domElements.forEach(function(domElement){
-            if(removeListener) {
-                domElement.removeEventListener(element.eventName, function(){
-                    test(element.handler);
-                });
-            }
             domElement.addEventListener(element.eventName, function(e){
                 element.handler(e)
-            });
+            }, {once: removeListener});
         })
     })
 }
