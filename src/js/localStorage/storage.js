@@ -27,15 +27,16 @@ export function getDataFromLocalStorage() {
 }
 
 export function addTaskToStorage(inputValue) {
-    let currentTasks = JSON.parse(localStorage.getItem("taskListArray"));
-    const id = currentTasks.length ? currentTasks[currentTasks.length - 1].id + 1 : 1;
-    let newTask = {
-        id: id,
+    const currentTasksArray = JSON.parse(localStorage.getItem("taskListArray"))
+    const lastItem = currentTasksArray[currentTasksArray.length - 1];
+    const taskID = lastItem === undefined ? 1 : lastItem.id + 1;
+    const newTask = {
+        id: taskID,
         text: inputValue,
         status: false
-    };
-    currentTasks = [...currentTasks, newTask];
-    localStorage.setItem("taskListArray", JSON.stringify(currentTasks));
+    }
+    localStorage.setItem("taskListArray", JSON.stringify([...currentTasksArray, newTask]))
+
 }
 
 export function editTextTaskInStorage(dataId, inputValue) {
