@@ -90,6 +90,5 @@ export function deleteTaskFromStorage(dataId) {
 
 
 export function deleteAllTasksFromStorage() {
-    localStorage.clear()
     localStorage.setItem("taskListArray", JSON.stringify([]));
 }

@@ -7,11 +7,11 @@ export const activeElements = {
             eventName: "keydown",
             handler: addTask
         },
-        {
-            elementSelector: ".add-tasks__btn",
-            eventName: "click",
-            handler: addTask
-        },
+        // {
+        //     elementSelector: ".add-tasks__btn",
+        //     eventName: "click",
+        //     handler: addTask
+        // },
         {
             elementSelector: ".footer__btn",
             eventName: "click",
