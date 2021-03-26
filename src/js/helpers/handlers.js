@@ -6,6 +6,7 @@ export function addTask(e) {
     const input = document.querySelector(".add-tasks__input");
     const inputValue = input.value.trim();
     addTaskToStorage(inputValue);
+    render();
 }
 
 export function deleteAllTasks(e) {
