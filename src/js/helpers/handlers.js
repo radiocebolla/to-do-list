@@ -5,6 +5,7 @@ export function addTask(e) {
     if(e.type === "keydown" && e.keyCode !== 13) return;
     const input = document.querySelector(".add-tasks__input");
     const inputValue = input.value.trim();
+    if(!inputValue) return;
     addTaskToStorage(inputValue);
     render();
 }
